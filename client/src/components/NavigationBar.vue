@@ -31,7 +31,7 @@ nav {
   display: flex;
   justify-content: space-between;
   padding: 3px 30px 0px 30px;
-  background-color: #0f4f6a;
+  background-color: #333333;
 }
 .logoContainer {
   flex: 1;

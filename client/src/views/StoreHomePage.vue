@@ -7,12 +7,21 @@
 
 <script>
 // import StoreService from "@/services/StoreService.js";
-import GameList from '@/components/GameList.vue'
+import GameList from "@/components/GameList.vue";
 
 export default {
   components: { GameList },
-
 };
 </script>
 
-<style></style>
+<style scoped>
+#carouselExampleIndicators {
+    background-color: #f8f9fa;
+  }
+  
+  /* Adjust the image aspect ratio */
+  .carousel-item img {
+    object-fit: cover;
+    height: 400px; /* set the desired height */
+  }
+</style>

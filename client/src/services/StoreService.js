@@ -13,7 +13,7 @@ import axios from "axios";
 
 export default {
   getAllGames() {
-    return axios.get("/games?genres=puzzle&key=4e5c574bcfe44161bddae880c383dfc3", {
+    return axios.get("/games?key=4e5c574bcfe44161bddae880c383dfc3", {
       baseURL: "https://api.rawg.io/api",
     });
   },
