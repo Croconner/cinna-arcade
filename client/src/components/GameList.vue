@@ -1,16 +1,18 @@
 <template>
-  <h3>hello</h3>
-  <photo-carousel :games="games.results"></photo-carousel>
+  <div>
+    <h3>hello</h3>
+    <PhotoCarousel :games="games"></PhotoCarousel>
 
-  <h1>Game List:</h1>
+    <h1>Game List:</h1>
 
-  <ul>
-    <li v-for="game in games.results" :key="game.id">
-      {{ game.name }}
-      {{ game.released }}
-      <img :src="game.background_image" />
-    </li>
-  </ul>
+    <ul>
+      <li v-for="game in games" :key="game.id">
+        {{ game.name }}
+        {{ game.released }}
+        <img :src="game.background_image" />
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
@@ -18,7 +20,7 @@ import StoreService from "@/services/StoreService";
 import PhotoCarousel from "@/components/PhotoCarousel.vue";
 
 export default {
-  name: "game-list",
+  name: "GameList",
   components: { PhotoCarousel },
 
   data() {
@@ -27,16 +29,15 @@ export default {
     };
   },
 
-  created() {
-    StoreService.getAllGames().then((response) => {
-      this.games = response.data;
-      this.$store.commit("SET_GAMES", this.games);
-    });
+  async created() {
+    const response = await StoreService.getAllGames();
+    this.games = response.data.results;
+    this.$store.commit("SET_GAMES", this.games);
   },
 };
 </script>
 
-<style>
+<style scoped>
 img {
   height: 200px;
 }

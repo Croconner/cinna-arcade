@@ -5,6 +5,7 @@
   </div>
 </template>
 
+
 <script>
 // import StoreService from "@/services/StoreService.js";
 import GameList from "@/components/GameList.vue";
