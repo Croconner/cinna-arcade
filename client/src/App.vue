@@ -17,7 +17,7 @@ export default{
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Orbitron', Avenir;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -36,10 +36,12 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #efefef;
+  text-decoration: none;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #800020;
+  text-decoration: underline;
 }
 </style>

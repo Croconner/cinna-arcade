@@ -1,5 +1,19 @@
 <template>
-  <div class="carousel" id="carouselExampleControls">
+  <div
+    id="carouselExampleIndicators"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-indicators">
+      <button
+        v-for="(game, index) in games"
+        :key="game.id"
+        :data-bs-target="'#carouselExampleIndicators'"
+        :data-bs-slide-to="index"
+        :class="{ active: currentIndex === index }"
+        @click="setIndex(index)"
+      ></button>
+    </div>
     <div class="carousel-inner">
       <div
         v-for="(game, index) in games"
@@ -20,9 +34,8 @@
     <button
       class="carousel-control-prev"
       type="button"
-      data-bs-target="#carouselExampleControls"
+      data-bs-target="#carouselExampleIndicators"
       data-bs-slide="prev"
-      @click="decrementIndex"
     >
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
@@ -30,29 +43,19 @@
     <button
       class="carousel-control-next"
       type="button"
-      data-bs-target="#carouselExampleControls"
+      data-bs-target="#carouselExampleIndicators"
       data-bs-slide="next"
-      @click="incrementIndex"
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
     </button>
-    <ol class="carousel-indicators">
-      <li
-        v-for="(game, index) in games"
-        :key="game.id"
-        :data-bs-target="'#carouselExampleControls'"
-        :data-bs-slide-to="index"
-        :class="{ active: currentIndex === index }"
-        @click="setIndex(index)"
-      ></li>
-    </ol>
   </div>
 </template>
 
 <script>
 // import { Carousel } from "bootstrap";
 import "bootstrap/dist/js/bootstrap.bundle";
+import debounce from 'lodash/debounce'
 
 export default {
   name: "photo-carousel",
@@ -94,35 +97,58 @@ export default {
         }
       }
     },
-    incrementIndex() {
-      this.currentIndex = (this.currentIndex + 1) % this.games.length;
-    },
-    decrementIndex() {
-      if (this.currentIndex === 0) {
-        this.currentIndex = this.games.length - 1;
-      } else {
-        this.currentIndex--;
-      }
-    },
-    setIndex(index) {
+    // incrementIndex() {
+    //   this.currentIndex = (this.currentIndex + 1) % this.games.length;
+    // },
+    // decrementIndex() {
+    //   if (this.currentIndex === 0) {
+    //     this.currentIndex = this.games.length - 1;
+    //   } else {
+    //     this.currentIndex--;
+    //   }
+    // },
+    // setIndex(index) {
+    //   this.currentIndex = index;
+    // },
+    setIndex: debounce(function(index) {
       this.currentIndex = index;
-    },
+    }, 500),
   },
 };
 </script>
 
-<style>
+<style scoped>
 #carouselExampleIndicators {
-  background-color: #f8f9fa;
+  /* background-color: #333333; */
+  border-radius: 50px;
 }
 
 /* Adjust the image aspect ratio */
 .carousel-item img {
   object-fit: cover;
   height: 400px; /* set the desired height */
+  border-radius: 50px;
 }
+
+.carousel-caption{
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+}
+
 
 .carousel-indicators li {
   display: inline-block;
 }
+
+#carouselExampleIndicators .carousel-indicators {
+  bottom: -40px;
+}
+
+#carouselExampleIndicators .carousel-control-prev {
+  left: -80px;
+}
+#carouselExampleIndicators .carousel-control-next {
+  right: -80px;
+}
+
 </style>
