@@ -18,11 +18,9 @@ export default {
     });
   },
 
-  getListOfGamesByPage(page) {
-    return axios.get(
-      `/games?key=4e5c574bcfe44161bddae880c383dfc3&page=${page}`, {
-        baseURL: "https://api.rawg.io/api",
-      }
-    );
-  },
+  async getGamesByPageNumber(page, gamesPerPage) {
+    return await axios.get(`/games?key=4e5c574bcfe44161bddae880c383dfc3&page=${page}&page_size=${gamesPerPage}`, {
+      baseURL: "https://api.rawg.io/api",
+    });
+  }
 };

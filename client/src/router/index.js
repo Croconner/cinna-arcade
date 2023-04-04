@@ -22,10 +22,10 @@ const routes = [
     component: UserLibraryView
   },
   {
-    path: '/store/games/',
+    path: '/store/games/:page?',
     name: 'browseGames',
     component: BrowseGamesList,
-  },
+  },  
 ]
 
 const router = createRouter({

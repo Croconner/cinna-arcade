@@ -33,13 +33,17 @@ export default {
   background-color: #333333;
 }
 
-.card-text{
-  color:#efefef;
+.card-text {
+  color: #efefef;
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   padding-bottom: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 
 </style>
