@@ -118,6 +118,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 #carouselExampleIndicators {
   /* background-color: #333333; */
   border-radius: 50px;
@@ -129,6 +131,37 @@ export default {
   height: 400px; /* set the desired height */
   border-radius: 50px;
 }
+
+/* potential solution for the carousel */
+
+/* .carousel-item img {
+  position: relative;
+  height: 400px;
+  border-radius: 50px;
+
+}
+
+.carousel-item img:before,
+.carousel-item img:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50px;
+  background-color: transparent;
+  z-index: -1;
+}
+
+.carousel-item img:before {
+  transform: rotate(45deg) translate(-40px, -40px);
+}
+
+.carousel-item img:after {
+  transform: rotate(-45deg) translate(40px, -40px);
+}
+ */
 
 .carousel-caption{
   background-color: rgba(0, 0, 0, 0.5);

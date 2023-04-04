@@ -17,4 +17,12 @@ export default {
       baseURL: "https://api.rawg.io/api",
     });
   },
+
+  getListOfGamesByPage(page) {
+    return axios.get(
+      `/games?key=4e5c574bcfe44161bddae880c383dfc3&page=${page}`, {
+        baseURL: "https://api.rawg.io/api",
+      }
+    );
+  },
 };
